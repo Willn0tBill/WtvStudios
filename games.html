@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Whatever Studios | Games</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <span class="logo-full">Whatever Studios</span>
+                <span class="logo-short">WtvS</span>
+            </a>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="games.html" class="nav-link active">Games</a>
+                <a href="https://github.com" target="_blank" class="nav-link">
+                    <i class="fab fa-github"></i> GitHub
+                </a>
+            </div>
+            <button class="menu-toggle" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Games Hero -->
+    <section class="games-hero">
+        <div class="container">
+            <div class="games-hero-content">
+                <h1 class="games-title">Our <span class="highlight">Games</span></h1>
+                <p class="games-subtitle">Browser-based entertainment, currently in development</p>
+                <div class="stats">
+                    <div class="stat">
+                        <span class="stat-number">2</span>
+                        <span class="stat-label">Games in Development</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">100%</span>
+                        <span class="stat-label">Free to Play</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">0</span>
+                        <span class="stat-label">Downloads Required</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Games Grid -->
+    <section class="games-grid-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Game <span class="highlight">Portfolio</span></h2>
+                <p class="section-subtitle">Click on any game to learn more about its development</p>
+                <div class="filter-buttons">
+                    <button class="filter-btn active" data-filter="all">All Games</button>
+                    <button class="filter-btn" data-filter="strategy">Strategy</button>
+                    <button class="filter-btn" data-filter="simulation">Simulation</button>
+                    <button class="filter-btn" data-filter="upcoming">Upcoming</button>
+                </div>
+            </div>
+
+            <div class="games-grid" id="gamesGrid">
+                <!-- Domination Card -->
+                <div class="game-card" data-category="strategy upcoming">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <div class="card-header">
+                                <span class="card-badge strategy">Strategy</span>
+                                <span class="card-badge upcoming">Coming Soon</span>
+                            </div>
+                            <div class="card-icon">
+                                <i class="fas fa-chess-king"></i>
+                            </div>
+                            <h3 class="card-title">Domination</h3>
+                            <p class="card-description">Turn-based tactical warfare against intelligent AI opponents. Conquer territories, manage resources, and dominate the battlefield.</p>
+                            <div class="card-features">
+                                <span class="feature"><i class="fas fa-user"></i> Single Player</span>
+                                <span class="feature"><i class="fas fa-brain"></i> AI Opponents</span>
+                                <span class="feature"><i class="fas fa-hourglass-half"></i> Turn-Based</span>
+                            </div>
+                        </div>
+                        <div class="card-back">
+                            <h4>Development Details</h4>
+                            <ul class="card-details">
+                                <li><strong>Status:</strong> Early Development</li>
+                                <li><strong>Tech:</strong> HTML5 Canvas, JavaScript</li>
+                                <li><strong>Platform:</strong> Web Browser</li>
+                                <li><strong>Release:</strong> Q4 2024 (Estimated)</li>
+                            </ul>
+                            <p class="card-back-desc">A deep strategic experience focusing on tactical decision-making and territory control. Each match presents unique challenges against adaptive AI.</p>
+                            <div class="progress-container">
+                                <div class="progress-label">Development Progress</div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 30%"></div>
+                                </div>
+                                <span class="progress-text">30%</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-actions">
+                        <button class="card-action-btn" onclick="toggleCard(this)">
+                            <i class="fas fa-info-circle"></i> Details
+                        </button>
+                        <button class="card-action-btn disabled">
+                            <i class="fas fa-play"></i> Play Demo (Soon)
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Flight Craft Card -->
+                <div class="game-card" data-category="simulation upcoming">
+                    <div class="card-inner">
+                        <div class="card-front">
+                            <div class="card-header">
+                                <span class="card-badge simulation">Simulation</span>
+                                <span class="card-badge upcoming">Coming Soon</span>
+                            </div>
+                            <div class="card-icon">
+                                <i class="fas fa-fighter-jet"></i>
+                            </div>
+                            <h3 class="card-title">Flight Craft</h3>
+                            <p class="card-description">Design, build, and pilot custom 3D aircraft in aerial combat. Create unique planes and test them against AI-controlled enemies.</p>
+                            <div class="card-features">
+                                <span class="feature"><i class="fas fa-cube"></i> 3D Design</span>
+                                <span class="feature"><i class="fas fa-plane"></i> Aerial Combat</span>
+                                <span class="feature"><i class="fas fa-robot"></i> AI Bots</span>
+                            </div>
+                        </div>
+                        <div class="card-back">
+                            <h4>Development Details</h4>
+                            <ul class="card-details">
+                                <li><strong>Status:</strong> Concept Phase</li>
+                                <li><strong>Tech:</strong> Three.js, WebGL</li>
+                                <li><strong>Platform:</strong> Modern Browsers</li>
+                                <li><strong>Release:</strong> 2025 (Estimated)</li>
+                            </ul>
+                            <p class="card-back-desc">Combines vehicle construction with aerial combat physics. Players can design every aspect of their aircraft, from wings to weapon systems.</p>
+                            <div class="progress-container">
+                                <div class="progress-label">Development Progress</div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 15%"></div>
+                                </div>
+                                <span class="progress-text">15%</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-actions">
+                        <button class="card-action-btn" onclick="toggleCard(this)">
+                            <i class="fas fa-info-circle"></i> Details
+                        </button>
+                        <button class="card-action-btn disabled">
+                            <i class="fas fa-play"></i> Play Demo (Soon)
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Coming Soon Cards -->
+                <div class="game-card placeholder" data-category="upcoming">
+                    <div class="placeholder-content">
+                        <div class="placeholder-icon">
+                            <i class="fas fa-plus"></i>
+                        </div>
+                        <h3>Next Project</h3>
+                        <p>Our next game concept is in planning. Stay tuned for updates!</p>
+                        <div class="placeholder-subscribe">
+                            <input type="email" placeholder="Your email for updates">
+                            <button class="btn-small">Notify Me</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="game-card placeholder" data-category="upcoming">
+                    <div class="placeholder-content">
+                        <div class="placeholder-icon">
+                            <i class="fas fa-lightbulb"></i>
+                        </div>
+                        <h3>Your Idea Here</h3>
+                        <p>Have a game concept? We're open to community suggestions!</p>
+                        <a href="#" class="btn-small">
+                            <i class="fas fa-comment"></i> Suggest Idea
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Follow Our <span class="highlight">Development</span></h2>
+                <p>Join us on GitHub to track our progress, report bugs, or contribute to our open-source projects.</p>
+                <a href="https://github.com" target="_blank" class="btn btn-large btn-github">
+                    <i class="fab fa-github"></i> Visit Our GitHub
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <a href="index.html" class="logo">
+                        <span class="logo-full">Whatever Studios</span>
+                        <span class="logo-short">WtvS</span>
+                    </a>
+                    <p>Creating web-based games for pure entertainment.</p>
+                    <div class="social-links">
+                        <a href="https://github.com" target="_blank" class="social-link">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-discord"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Explore</h4>
+                        <a href="index.html">Home</a>
+                        <a href="games.html">Games</a>
+                        <a href="index.html#about">About Us</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Development</h4>
+                        <a href="https://github.com" target="_blank">GitHub</a>
+                        <a href="#">Roadmap</a>
+                        <a href="#">Contribute</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Whatever Studios (WtvS). All game concepts are works in progress.</p>
+                <p class="footer-note">Game development is a journey. Thanks for joining ours.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
