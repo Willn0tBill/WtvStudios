@@ -831,7 +831,7 @@ h4 { font-size: 1.3rem; }
     text-align: right;
 }
 
-/* Action buttons */
+/* Action buttons - FIXED FOR MOBILE */
 .card-actions {
     display: flex;
     gap: 12px;
@@ -1311,10 +1311,6 @@ h4 { font-size: 1.3rem; }
         grid-template-columns: 1fr;
     }
     
-    .card-actions {
-        flex-direction: column;
-    }
-    
     .story-cta .cta-buttons {
         flex-direction: column;
         align-items: center;
@@ -1325,26 +1321,118 @@ h4 { font-size: 1.3rem; }
         grid-template-columns: 1fr;
     }
     
-    /* Game card responsive adjustments */
+    /* ===== MOBILE GAME CARD FIXES ===== */
     .game-card {
+        height: auto !important;
+        min-height: 600px;
+        padding: 20px;
+        position: relative;
+        overflow: visible;
+    }
+    
+    .card-inner {
         height: auto;
         min-height: 500px;
     }
     
+    .card-front,
+    .card-back {
+        position: relative;
+        height: auto;
+        min-height: 500px;
+        padding: 20px;
+        padding-bottom: 90px; /* Space for buttons */
+        backface-visibility: visible;
+    }
+    
+    .card-front {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .card-back {
+        display: none;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        background: rgba(10, 10, 10, 0.98);
+        transform: none;
+        z-index: 2;
+        border-radius: 20px;
+    }
+    
+    .game-card.flipped .card-front {
+        display: none;
+    }
+    
+    .game-card.flipped .card-back {
+        display: block;
+    }
+    
+    .game-card.flipped .card-inner {
+        transform: none;
+    }
+    
+    /* Features grid for mobile */
     .card-features {
         grid-template-columns: repeat(2, 1fr);
         gap: 8px;
         padding: 12px;
         min-height: 100px;
+        margin: 10px 0 20px;
     }
     
     .feature {
         padding: 6px 4px;
         font-size: 0.75rem;
+        min-height: 40px;
     }
     
     .feature i {
         font-size: 0.9rem;
+        margin-bottom: 4px;
+    }
+    
+    /* Card description */
+    .card-description {
+        -webkit-line-clamp: 4;
+        margin-bottom: 15px;
+        max-height: 80px;
+    }
+    
+    /* Action buttons - FIXED POSITIONING FOR MOBILE */
+    .card-actions {
+        position: absolute;
+        bottom: 20px;
+        left: 20px;
+        right: 20px;
+        margin-top: 0;
+        padding: 15px;
+        background: rgba(10, 10, 10, 0.95);
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 0 0 15px 15px;
+        display: flex;
+        gap: 10px;
+        z-index: 10;
+    }
+    
+    .card-action-btn {
+        padding: 12px 15px;
+        font-size: 0.85rem;
+        min-height: 44px;
+    }
+    
+    /* Back card content spacing */
+    .card-back-desc {
+        max-height: 150px;
+        margin-bottom: 15px;
+        padding-right: 0;
+    }
+    
+    .progress-container {
+        margin-top: 15px;
+        padding-bottom: 5px;
     }
 }
 
@@ -1378,44 +1466,117 @@ h4 { font-size: 1.3rem; }
     }
     
     /* Game card mobile adjustments */
+    .game-card {
+        min-height: 620px;
+        margin-bottom: 20px;
+    }
+    
+    .card-front,
+    .card-back {
+        min-height: 520px;
+        padding-bottom: 100px;
+    }
+    
+    /* Single column features on very small screens */
     .card-features {
         grid-template-columns: 1fr;
-        min-height: 160px;
+        min-height: 140px;
+        gap: 6px;
+        margin: 10px 0 15px;
     }
     
     .feature {
-        padding: 8px;
         flex-direction: row;
         justify-content: flex-start;
         text-align: left;
+        padding: 8px;
+        min-height: 35px;
         gap: 10px;
     }
     
     .feature i {
         margin-bottom: 0;
-        flex-shrink: 0;
         width: 20px;
+        text-align: center;
     }
     
+    .feature span {
+        flex: 1;
+    }
+    
+    /* Card title and description */
     .card-title {
         font-size: 1.4rem;
-        min-height: 38px;
+        min-height: 35px;
+        margin-bottom: 10px;
     }
     
     .card-description {
         font-size: 0.9rem;
-        -webkit-line-clamp: 3;
+        -webkit-line-clamp: 4;
+        line-height: 1.5;
+        margin-bottom: 10px;
     }
     
-    .game-card {
+    /* Action buttons stacked on very small screens */
+    .card-actions {
+        flex-direction: column;
+        padding: 15px;
+        gap: 8px;
+        bottom: 15px;
+    }
+    
+    .card-action-btn {
+        width: 100%;
+        padding: 14px;
+        font-size: 0.9rem;
+        min-height: 46px;
+    }
+    
+    /* Back card adjustments */
+    .card-back {
+        padding-bottom: 120px;
+    }
+    
+    .card-back h4 {
+        font-size: 1.2rem;
+        margin-bottom: 15px;
+    }
+    
+    .card-details {
+        margin-bottom: 15px;
+    }
+    
+    .card-details li {
+        padding: 8px 0;
+        font-size: 0.9rem;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 2px;
+    }
+    
+    .card-details li strong {
+        font-size: 0.85rem;
+    }
+    
+    .card-back-desc {
+        font-size: 0.85rem;
+        line-height: 1.5;
+        max-height: 150px;
+    }
+    
+    .placeholder-content {
         padding: 20px;
-        height: auto;
-        min-height: 480px;
+    }
+    
+    .placeholder-icon {
+        font-size: 2.5rem;
+        margin-bottom: 20px;
     }
     
     .game-card.placeholder {
+        min-height: 400px;
         height: auto;
-        min-height: 300px;
     }
 }
 
