@@ -1,0 +1,12 @@
+{
+  "name": "wtv-studios",
+  "version": "1.0.0",
+  "description": "Whatever Studios - Web-based game development studio",
+  "scripts": {
+    "start": "live-server --port=3000 --open=index.html",
+    "build": "echo 'No build step required'"
+  },
+  "devDependencies": {
+    "live-server": "^1.2.2"
+  }
+}
