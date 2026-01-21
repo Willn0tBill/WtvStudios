@@ -52,81 +52,124 @@ function initMobileMenu() {
     }
 }
 
-// Game card flip functionality - UPDATED FOR BETTER INTERACTION
+// Game card flip functionality - IMPROVED FOR MOBILE
 function initGameCards() {
     const flipButtons = document.querySelectorAll('.flip-btn');
     
     flipButtons.forEach(button => {
-        button.addEventListener('click', function() {
+        button.addEventListener('click', function(e) {
+            e.stopPropagation(); // Prevent event bubbling
+            
             const card = this.closest('.game-card');
             const isFlipped = card.classList.contains('flipped');
             
-            // Flip back any other flipped cards
-            document.querySelectorAll('.game-card.flipped').forEach(flippedCard => {
-                if (flippedCard !== card) {
-                    flippedCard.classList.remove('flipped');
-                    const otherButton = flippedCard.querySelector('.flip-btn');
-                    if (otherButton) {
-                        otherButton.innerHTML = '<i class="fas fa-info-circle"></i> Details';
-                        otherButton.classList.remove('active');
-                    }
+            // Check if we're on mobile
+            const isMobile = window.innerWidth <= 768;
+            
+            if (isMobile) {
+                // Mobile behavior - simple show/hide
+                if (isFlipped) {
+                    // Flip back to front
+                    card.classList.remove('flipped');
+                    this.innerHTML = '<i class="fas fa-info-circle"></i> Details';
+                    this.classList.remove('active');
+                } else {
+                    // Flip to back
+                    // First, flip back any other flipped cards
+                    document.querySelectorAll('.game-card.flipped').forEach(flippedCard => {
+                        if (flippedCard !== card) {
+                            flippedCard.classList.remove('flipped');
+                            const otherButton = flippedCard.querySelector('.flip-btn');
+                            if (otherButton) {
+                                otherButton.innerHTML = '<i class="fas fa-info-circle"></i> Details';
+                                otherButton.classList.remove('active');
+                            }
+                        }
+                    });
+                    
+                    // Then flip current card
+                    card.classList.add('flipped');
+                    this.innerHTML = '<i class="fas fa-undo"></i> Back';
+                    this.classList.add('active');
+                    
+                    // Scroll the card into view on mobile
+                    setTimeout(() => {
+                        card.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                    }, 100);
                 }
-            });
-            
-            // Toggle current card
-            card.classList.toggle('flipped');
-            
-            // Update button text
-            if (card.classList.contains('flipped')) {
-                this.innerHTML = '<i class="fas fa-undo"></i> Back';
-                this.classList.add('active');
             } else {
-                this.innerHTML = '<i class="fas fa-info-circle"></i> Details';
-                this.classList.remove('active');
+                // Desktop behavior with 3D flip
+                // Flip back any other flipped cards
+                document.querySelectorAll('.game-card.flipped').forEach(flippedCard => {
+                    if (flippedCard !== card) {
+                        flippedCard.classList.remove('flipped');
+                        const otherButton = flippedCard.querySelector('.flip-btn');
+                        if (otherButton) {
+                            otherButton.innerHTML = '<i class="fas fa-info-circle"></i> Details';
+                            otherButton.classList.remove('active');
+                        }
+                    }
+                });
+                
+                // Toggle current card
+                card.classList.toggle('flipped');
+                
+                // Update button text
+                if (card.classList.contains('flipped')) {
+                    this.innerHTML = '<i class="fas fa-undo"></i> Back';
+                    this.classList.add('active');
+                } else {
+                    this.innerHTML = '<i class="fas fa-info-circle"></i> Details';
+                    this.classList.remove('active');
+                }
             }
         });
     });
     
-    // Add hover effects to game cards
-    const gameCards = document.querySelectorAll('.game-card:not(.placeholder)');
-    gameCards.forEach(card => {
-        const inner = card.querySelector('.card-inner');
-        
-        card.addEventListener('mouseenter', function() {
-            if (!this.classList.contains('flipped')) {
-                this.style.transform = 'translateY(-10px)';
-                this.style.boxShadow = '0 20px 40px rgba(0, 212, 255, 0.1)';
-            }
-        });
-        
-        card.addEventListener('mouseleave', function() {
-            if (!this.classList.contains('flipped')) {
-                this.style.transform = 'translateY(0)';
-                this.style.boxShadow = 'none';
-            }
-        });
-        
-        // Add hover effect to features
-        const features = card.querySelectorAll('.feature');
-        features.forEach(feature => {
-            feature.addEventListener('mouseenter', function() {
-                if (!card.classList.contains('flipped')) {
-                    this.style.transform = 'scale(1.05)';
+    // Add hover effects to game cards (desktop only)
+    if (window.innerWidth > 768) {
+        const gameCards = document.querySelectorAll('.game-card:not(.placeholder)');
+        gameCards.forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                if (!this.classList.contains('flipped')) {
+                    this.style.transform = 'translateY(-10px)';
+                    this.style.boxShadow = '0 20px 40px rgba(0, 212, 255, 0.1)';
                 }
             });
             
-            feature.addEventListener('mouseleave', function() {
-                this.style.transform = 'scale(1)';
+            card.addEventListener('mouseleave', function() {
+                if (!this.classList.contains('flipped')) {
+                    this.style.transform = 'translateY(0)';
+                    this.style.boxShadow = 'none';
+                }
+            });
+            
+            // Add hover effect to features
+            const features = card.querySelectorAll('.feature');
+            features.forEach(feature => {
+                feature.addEventListener('mouseenter', function() {
+                    if (!card.classList.contains('flipped')) {
+                        this.style.transform = 'scale(1.05)';
+                        this.style.backgroundColor = 'rgba(0, 212, 255, 0.05)';
+                    }
+                });
+                
+                feature.addEventListener('mouseleave', function() {
+                    this.style.transform = 'scale(1)';
+                    this.style.backgroundColor = '';
+                });
             });
         });
-    });
+    }
     
-    // Close card when clicking outside on mobile
-    document.addEventListener('click', (e) => {
+    // Close flipped cards when clicking outside on mobile
+    document.addEventListener('click', function(e) {
         if (window.innerWidth <= 768) {
+            const clickedCard = e.target.closest('.game-card');
             const flippedCards = document.querySelectorAll('.game-card.flipped');
+            
             flippedCards.forEach(card => {
-                if (!card.contains(e.target)) {
+                if (!card.contains(e.target) && clickedCard !== card) {
                     card.classList.remove('flipped');
                     const button = card.querySelector('.flip-btn');
                     if (button) {
@@ -136,6 +179,13 @@ function initGameCards() {
                 }
             });
         }
+    });
+    
+    // Prevent card content clicks from closing the card
+    document.querySelectorAll('.game-card .card-front, .game-card .card-back').forEach(element => {
+        element.addEventListener('click', function(e) {
+            e.stopPropagation();
+        });
     });
 }
 
@@ -298,7 +348,7 @@ window.addEventListener('resize', function() {
     resizeTimer = setTimeout(function() {
         initActiveNav();
         
-        // Close all flipped cards on mobile when resizing
+        // Reset all flipped cards on mobile when resizing
         if (window.innerWidth <= 768) {
             document.querySelectorAll('.game-card.flipped').forEach(card => {
                 card.classList.remove('flipped');
@@ -320,3 +370,41 @@ if (!document.querySelector('.loading-overlay')) {
     document.body.appendChild(overlay);
     document.body.classList.add('loading');
 }
+
+// Add CSS for particle animation if not exists
+if (!document.querySelector('#particle-animation')) {
+    const style = document.createElement('style');
+    style.id = 'particle-animation';
+    style.textContent = `
+        @keyframes floatParticle {
+            0% {
+                transform: translateY(0) translateX(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.7;
+            }
+            90% {
+                opacity: 0.7;
+            }
+            100% {
+                transform: translateY(-100px) translateX(var(--random-x, 0px));
+                opacity: 0;
+            }
+        }
+    `;
+    document.head.appendChild(style);
+}
+
+// Touch optimization for mobile
+document.addEventListener('touchstart', function() {}, { passive: true });
+
+// Prevent zoom on double tap for mobile
+let lastTouchEnd = 0;
+document.addEventListener('touchend', function(event) {
+    const now = (new Date()).getTime();
+    if (now - lastTouchEnd <= 300) {
+        event.preventDefault();
+    }
+    lastTouchEnd = now;
+}, false);
