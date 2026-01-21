@@ -4,25 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Whatever Studios | Games</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="/css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
 </head>
 <body>
     <!-- Navigation -->
     <nav class="navbar">
         <div class="container">
-            <a href="index.html" class="logo">
+            <a href="/" class="logo">
                 <span class="logo-full">Whatever Studios</span>
                 <span class="logo-short">WtvS</span>
             </a>
             <div class="nav-links">
-                <a href="index.html" class="nav-link">Home</a>
-                <a href="games.html" class="nav-link active">Games</a>
-                <a href="about.html" class="nav-link">Our Story</a>
+                <a href="/" class="nav-link">Home</a>
+                <a href="/games.html" class="nav-link active">Games</a>
+                <a href="/about.html" class="nav-link">Our Story</a>
                 <a href="https://github.com" target="_blank" class="nav-link">
                     <i class="fab fa-github"></i> GitHub
                 </a>
@@ -63,17 +62,11 @@
             <div class="section-header">
                 <h2 class="section-title">Game <span class="highlight">Portfolio</span></h2>
                 <p class="section-subtitle">Click on any game to learn more about its development</p>
-                <div class="filter-buttons">
-                    <button class="filter-btn active" data-filter="all">All Games</button>
-                    <button class="filter-btn" data-filter="strategy">Strategy</button>
-                    <button class="filter-btn" data-filter="simulation">Simulation</button>
-                    <button class="filter-btn" data-filter="upcoming">Upcoming</button>
-                </div>
             </div>
 
-            <div class="games-grid" id="gamesGrid">
+            <div class="games-grid">
                 <!-- Domination Card -->
-                <div class="game-card" data-category="strategy upcoming">
+                <div class="game-card">
                     <div class="card-inner">
                         <div class="card-front">
                             <div class="card-header">
@@ -120,7 +113,7 @@
                 </div>
 
                 <!-- Flight Craft Card -->
-                <div class="game-card" data-category="simulation upcoming">
+                <div class="game-card">
                     <div class="card-inner">
                         <div class="card-front">
                             <div class="card-header">
@@ -167,30 +160,23 @@
                 </div>
 
                 <!-- Coming Soon Cards -->
-                <div class="game-card placeholder" data-category="upcoming">
+                <div class="game-card placeholder">
                     <div class="placeholder-content">
                         <div class="placeholder-icon">
                             <i class="fas fa-plus"></i>
                         </div>
                         <h3>Next Project</h3>
                         <p>Our next game concept is in planning. Stay tuned for updates!</p>
-                        <div class="placeholder-subscribe">
-                            <input type="email" placeholder="Your email for updates">
-                            <button class="btn-small">Notify Me</button>
-                        </div>
                     </div>
                 </div>
 
-                <div class="game-card placeholder" data-category="upcoming">
+                <div class="game-card placeholder">
                     <div class="placeholder-content">
                         <div class="placeholder-icon">
                             <i class="fas fa-lightbulb"></i>
                         </div>
                         <h3>Your Idea Here</h3>
                         <p>Have a game concept? We're open to community suggestions!</p>
-                        <a href="#" class="btn-small">
-                            <i class="fas fa-comment"></i> Suggest Idea
-                        </a>
                     </div>
                 </div>
             </div>
@@ -215,7 +201,7 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-brand">
-                    <a href="index.html" class="logo">
+                    <a href="/" class="logo">
                         <span class="logo-full">Whatever Studios</span>
                         <span class="logo-short">WtvS</span>
                     </a>
@@ -235,9 +221,9 @@
                 <div class="footer-links">
                     <div class="footer-column">
                         <h4>Explore</h4>
-                        <a href="index.html">Home</a>
-                        <a href="games.html">Games</a>
-                        <a href="index.html#about">About Us</a>
+                        <a href="/">Home</a>
+                        <a href="/games.html">Games</a>
+                        <a href="/about.html">Our Story</a>
                     </div>
                     <div class="footer-column">
                         <h4>Development</h4>
@@ -254,6 +240,47 @@
         </div>
     </footer>
 
-    <script src="js/script.js"></script>
+    <script>
+        // Simple mobile menu
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuToggle = document.getElementById('menuToggle');
+            const navLinks = document.querySelector('.nav-links');
+            
+            if (menuToggle) {
+                menuToggle.addEventListener('click', function() {
+                    navLinks.classList.toggle('active');
+                    this.innerHTML = navLinks.classList.contains('active') 
+                        ? '<i class="fas fa-times"></i>' 
+                        : '<i class="fas fa-bars"></i>';
+                });
+            }
+            
+            // Card flip function
+            window.toggleCard = function(button) {
+                const card = button.closest('.game-card');
+                card.classList.toggle('flipped');
+                
+                if (card.classList.contains('flipped')) {
+                    button.innerHTML = '<i class="fas fa-undo"></i> Back';
+                } else {
+                    button.innerHTML = '<i class="fas fa-info-circle"></i> Details';
+                }
+            };
+            
+            // Update active nav link
+            const currentPage = window.location.pathname;
+            const navLinksAll = document.querySelectorAll('.nav-link');
+            
+            navLinksAll.forEach(link => {
+                link.classList.remove('active');
+                const linkPath = link.getAttribute('href');
+                
+                if (currentPage === linkPath || 
+                    (currentPage === '/games.html' && linkPath === '/games.html')) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
 </body>
 </html>
