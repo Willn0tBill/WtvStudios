@@ -52,7 +52,7 @@ function initMobileMenu() {
     }
 }
 
-// Game card flip functionality
+// Game card flip functionality - UPDATED FOR BETTER INTERACTION
 function initGameCards() {
     const flipButtons = document.querySelectorAll('.flip-btn');
     
@@ -68,6 +68,7 @@ function initGameCards() {
                     const otherButton = flippedCard.querySelector('.flip-btn');
                     if (otherButton) {
                         otherButton.innerHTML = '<i class="fas fa-info-circle"></i> Details';
+                        otherButton.classList.remove('active');
                     }
                 }
             });
@@ -78,8 +79,10 @@ function initGameCards() {
             // Update button text
             if (card.classList.contains('flipped')) {
                 this.innerHTML = '<i class="fas fa-undo"></i> Back';
+                this.classList.add('active');
             } else {
                 this.innerHTML = '<i class="fas fa-info-circle"></i> Details';
+                this.classList.remove('active');
             }
         });
     });
@@ -87,17 +90,52 @@ function initGameCards() {
     // Add hover effects to game cards
     const gameCards = document.querySelectorAll('.game-card:not(.placeholder)');
     gameCards.forEach(card => {
+        const inner = card.querySelector('.card-inner');
+        
         card.addEventListener('mouseenter', function() {
             if (!this.classList.contains('flipped')) {
                 this.style.transform = 'translateY(-10px)';
+                this.style.boxShadow = '0 20px 40px rgba(0, 212, 255, 0.1)';
             }
         });
         
         card.addEventListener('mouseleave', function() {
             if (!this.classList.contains('flipped')) {
                 this.style.transform = 'translateY(0)';
+                this.style.boxShadow = 'none';
             }
         });
+        
+        // Add hover effect to features
+        const features = card.querySelectorAll('.feature');
+        features.forEach(feature => {
+            feature.addEventListener('mouseenter', function() {
+                if (!card.classList.contains('flipped')) {
+                    this.style.transform = 'scale(1.05)';
+                }
+            });
+            
+            feature.addEventListener('mouseleave', function() {
+                this.style.transform = 'scale(1)';
+            });
+        });
+    });
+    
+    // Close card when clicking outside on mobile
+    document.addEventListener('click', (e) => {
+        if (window.innerWidth <= 768) {
+            const flippedCards = document.querySelectorAll('.game-card.flipped');
+            flippedCards.forEach(card => {
+                if (!card.contains(e.target)) {
+                    card.classList.remove('flipped');
+                    const button = card.querySelector('.flip-btn');
+                    if (button) {
+                        button.innerHTML = '<i class="fas fa-info-circle"></i> Details';
+                        button.classList.remove('active');
+                    }
+                }
+            });
+        }
     });
 }
 
@@ -117,11 +155,15 @@ function initScrollEffects() {
                 navbar.style.boxShadow = 'none';
             }
             
-            // Hide/show navbar on scroll
-            if (currentScroll > lastScroll && currentScroll > 100) {
-                navbar.style.transform = 'translateY(-100%)';
-            } else {
-                navbar.style.transform = 'translateY(0)';
+            // Hide/show navbar on scroll (only on desktop)
+            if (window.innerWidth > 768) {
+                if (currentScroll > lastScroll && currentScroll > 100) {
+                    navbar.style.transform = 'translateY(-100%)';
+                    navbar.style.transition = 'transform 0.3s ease';
+                } else {
+                    navbar.style.transform = 'translateY(0)';
+                    navbar.style.transition = 'transform 0.3s ease';
+                }
             }
             
             lastScroll = currentScroll;
@@ -255,6 +297,18 @@ window.addEventListener('resize', function() {
     clearTimeout(resizeTimer);
     resizeTimer = setTimeout(function() {
         initActiveNav();
+        
+        // Close all flipped cards on mobile when resizing
+        if (window.innerWidth <= 768) {
+            document.querySelectorAll('.game-card.flipped').forEach(card => {
+                card.classList.remove('flipped');
+                const button = card.querySelector('.flip-btn');
+                if (button) {
+                    button.innerHTML = '<i class="fas fa-info-circle"></i> Details';
+                    button.classList.remove('active');
+                }
+            });
+        }
     }, 250);
 });
 
@@ -265,36 +319,4 @@ if (!document.querySelector('.loading-overlay')) {
     overlay.innerHTML = '<div class="loader"></div>';
     document.body.appendChild(overlay);
     document.body.classList.add('loading');
-}
-
-// Add CSS for animations if not exists
-if (!document.querySelector('#animations')) {
-    const style = document.createElement('style');
-    style.id = 'animations';
-    style.textContent = `
-        .animate-in {
-            animation: fadeInUp 0.6s ease forwards;
-            opacity: 0;
-        }
-        
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        .feature,
-        .preview-card,
-        .game-card,
-        .philosophy-card,
-        .project-card {
-            opacity: 0;
-        }
-    `;
-    document.head.appendChild(style);
 }
