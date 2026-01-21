@@ -13,6 +13,16 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
+    // Close mobile menu when clicking a link
+    document.querySelectorAll('.nav-link').forEach(link => {
+        link.addEventListener('click', () => {
+            navLinks.classList.remove('active');
+            if (menuToggle) {
+                menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
+            }
+        });
+    });
+    
     // Filter games
     const filterButtons = document.querySelectorAll('.filter-btn');
     const gameCards = document.querySelectorAll('.game-card');
@@ -74,45 +84,49 @@ document.addEventListener('DOMContentLoaded', function() {
     let lastScroll = 0;
     const navbar = document.querySelector('.navbar');
     
-    window.addEventListener('scroll', function() {
-        const currentScroll = window.pageYOffset;
-        
-        // Add shadow when scrolled
-        if (currentScroll > 50) {
-            navbar.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.3)';
-        } else {
-            navbar.style.boxShadow = 'none';
-        }
-        
-        // Hide/show navbar on scroll
-        if (currentScroll > lastScroll && currentScroll > 100) {
-            navbar.style.transform = 'translateY(-100%)';
-        } else {
-            navbar.style.transform = 'translateY(0)';
-        }
-        
-        lastScroll = currentScroll;
-    });
+    if (navbar) {
+        window.addEventListener('scroll', function() {
+            const currentScroll = window.pageYOffset;
+            
+            // Add shadow when scrolled
+            if (currentScroll > 50) {
+                navbar.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.3)';
+            } else {
+                navbar.style.boxShadow = 'none';
+            }
+            
+            // Hide/show navbar on scroll
+            if (currentScroll > lastScroll && currentScroll > 100) {
+                navbar.style.transform = 'translateY(-100%)';
+            } else {
+                navbar.style.transform = 'translateY(0)';
+            }
+            
+            lastScroll = currentScroll;
+        });
+    }
     
-    // Add hover effect to cards
+    // Add hover effect to game cards
     const cards = document.querySelectorAll('.game-card:not(.placeholder)');
     cards.forEach(card => {
-        card.addEventListener('mouseenter', function() {
-            const inner = this.querySelector('.card-inner');
-            if (inner && !inner.parentElement.classList.contains('flipped')) {
-                inner.style.transform = 'translateZ(20px) rotateX(2deg) rotateY(2deg)';
-            }
-        });
+        const inner = card.querySelector('.card-inner');
         
-        card.addEventListener('mouseleave', function() {
-            const inner = this.querySelector('.card-inner');
-            if (inner && !inner.parentElement.classList.contains('flipped')) {
-                inner.style.transform = 'translateZ(0) rotateX(0) rotateY(0)';
-            }
-        });
+        if (inner) {
+            card.addEventListener('mouseenter', function() {
+                if (!card.classList.contains('flipped')) {
+                    inner.style.transform = 'translateZ(20px) rotateX(2deg) rotateY(2deg)';
+                }
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                if (!card.classList.contains('flipped')) {
+                    inner.style.transform = 'translateZ(0) rotateX(0) rotateY(0)';
+                }
+            });
+        }
     });
     
-    // Subscribe form placeholder
+    // Subscribe form functionality
     const subscribeForm = document.querySelector('.placeholder-subscribe');
     if (subscribeForm) {
         const input = subscribeForm.querySelector('input');
@@ -121,6 +135,7 @@ document.addEventListener('DOMContentLoaded', function() {
         button.addEventListener('click', function(e) {
             e.preventDefault();
             if (input.value && input.value.includes('@')) {
+                const originalText = button.textContent;
                 button.textContent = 'Subscribed!';
                 button.style.background = 'rgba(0, 255, 170, 0.2)';
                 button.style.borderColor = '#00ffaa';
@@ -128,7 +143,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 input.value = '';
                 
                 setTimeout(() => {
-                    button.textContent = 'Notify Me';
+                    button.textContent = originalText;
                     button.style.background = '';
                     button.style.borderColor = '';
                     button.style.color = '';
@@ -144,18 +159,29 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Add particles effect to hero
     createParticles();
+    
+    // Set active nav link based on current page
+    setActiveNavLink();
 });
 
 // Toggle card flip
 function toggleCard(button) {
     const card = button.closest('.game-card');
-    card.classList.toggle('flipped');
-    
-    const icon = button.querySelector('i');
     if (card.classList.contains('flipped')) {
-        button.innerHTML = '<i class="fas fa-undo"></i> Back';
-    } else {
+        card.classList.remove('flipped');
         button.innerHTML = '<i class="fas fa-info-circle"></i> Details';
+    } else {
+        // Flip back any other flipped cards
+        document.querySelectorAll('.game-card.flipped').forEach(flippedCard => {
+            flippedCard.classList.remove('flipped');
+            const otherButton = flippedCard.querySelector('.card-action-btn');
+            if (otherButton) {
+                otherButton.innerHTML = '<i class="fas fa-info-circle"></i> Details';
+            }
+        });
+        
+        card.classList.add('flipped');
+        button.innerHTML = '<i class="fas fa-undo"></i> Back';
     }
 }
 
@@ -163,6 +189,9 @@ function toggleCard(button) {
 function createParticles() {
     const hero = document.querySelector('.hero');
     if (!hero) return;
+    
+    // Remove existing particles
+    document.querySelectorAll('.particle').forEach(p => p.remove());
     
     for (let i = 0; i < 50; i++) {
         const particle = document.createElement('div');
@@ -180,17 +209,37 @@ function createParticles() {
         hero.appendChild(particle);
     }
     
-    // Add animation style
-    const style = document.createElement('style');
-    style.textContent = `
-        @keyframes floatParticle {
-            0% { transform: translateY(0) translateX(0); opacity: 0; }
-            10% { opacity: 1; }
-            90% { opacity: 1; }
-            100% { transform: translateY(-100vh) translateX(${Math.random() * 100 - 50}px); opacity: 0; }
+    // Add animation style if not already exists
+    if (!document.querySelector('#particle-styles')) {
+        const style = document.createElement('style');
+        style.id = 'particle-styles';
+        style.textContent = `
+            @keyframes floatParticle {
+                0% { transform: translateY(0) translateX(0); opacity: 0; }
+                10% { opacity: 1; }
+                90% { opacity: 1; }
+                100% { transform: translateY(-100vh) translateX(${Math.random() * 100 - 50}px); opacity: 0; }
+            }
+        `;
+        document.head.appendChild(style);
+    }
+}
+
+// Set active navigation link based on current page
+function setActiveNavLink() {
+    const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+    const navLinks = document.querySelectorAll('.nav-link');
+    
+    navLinks.forEach(link => {
+        link.classList.remove('active');
+        
+        const linkHref = link.getAttribute('href');
+        if (linkHref === currentPage) {
+            link.classList.add('active');
+        } else if (currentPage === '' && linkHref === 'index.html') {
+            link.classList.add('active');
         }
-    `;
-    document.head.appendChild(style);
+    });
 }
 
 // Update current year in footer
@@ -219,7 +268,23 @@ window.addEventListener('load', function() {
     }, observerOptions);
     
     // Observe elements to animate
-    document.querySelectorAll('.feature, .preview-card, .game-card').forEach(el => {
+    document.querySelectorAll('.feature, .preview-card, .game-card, .timeline-item, .philosophy-card').forEach(el => {
         observer.observe(el);
     });
 });
+
+// Handle game card filtering
+function filterGames(category) {
+    const buttons = document.querySelectorAll('.filter-btn');
+    buttons.forEach(btn => {
+        if (btn.getAttribute('data-filter') === category) {
+            btn.classList.add('active');
+        } else {
+            btn.classList.remove('active');
+        }
+    });
+    
+    // Trigger click event on the button
+    const button = document.querySelector(`.filter-btn[data-filter="${category}"]`);
+    if (button) button.click();
+}
