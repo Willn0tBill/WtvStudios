@@ -9,6 +9,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎮</text></svg>">
 </head>
 <body>
     <!-- Navigation -->
@@ -18,11 +19,11 @@
                 <span class="logo-full">Whatever Studios</span>
                 <span class="logo-short">WtvS</span>
             </a>
-            <div class="nav-links">
+            <div class="nav-links" id="navLinks">
                 <a href="index.html" class="nav-link active">Home</a>
                 <a href="games.html" class="nav-link">Games</a>
                 <a href="about.html" class="nav-link">Our Story</a>
-                <a href="https://github.com" target="_blank" class="nav-link">
+                <a href="https://github.com/Willn0tBill/WtvStudios" target="_blank" class="nav-link">
                     <i class="fab fa-github"></i> GitHub
                 </a>
             </div>
@@ -159,7 +160,7 @@
                     </a>
                     <p>Creating web-based games for pure entertainment.</p>
                     <div class="social-links">
-                        <a href="https://github.com" target="_blank" class="social-link">
+                        <a href="https://github.com/Willn0tBill/WtvStudios" target="_blank" class="social-link">
                             <i class="fab fa-github"></i>
                         </a>
                         <a href="#" class="social-link">
@@ -179,44 +180,19 @@
                     </div>
                     <div class="footer-column">
                         <h4>Development</h4>
-                        <a href="https://github.com" target="_blank">GitHub</a>
+                        <a href="https://github.com/Willn0tBill/WtvStudios" target="_blank">GitHub</a>
                         <a href="#">Roadmap</a>
                         <a href="#">Contribute</a>
                     </div>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2024 Whatever Studios (WtvS). All game concepts are works in progress.</p>
+                <p>&copy; <span id="currentYear">2024</span> Whatever Studios (WtvS). All game concepts are works in progress.</p>
                 <p class="footer-note">Made with <i class="fas fa-heart"></i> for gamers everywhere</p>
             </div>
         </div>
     </footer>
 
     <script src="js/script.js"></script>
-    <script>
-        // We can keep this inline or move to the external JS file. 
-        // For now, we keep it here because it's page specific.
-        document.addEventListener('DOMContentLoaded', function() {
-            // Update active nav link
-            const currentPage = window.location.pathname;
-            const navLinksAll = document.querySelectorAll('.nav-link');
-            
-            navLinksAll.forEach(link => {
-                link.classList.remove('active');
-                const linkPath = link.getAttribute('href');
-                
-                // We are now using relative paths, so we need to check the current page and the link's href
-                // We can extract the filename from the currentPage
-                const currentFileName = currentPage.split('/').pop();
-                
-                if (linkPath === currentFileName) {
-                    link.classList.add('active');
-                } else if (currentFileName === '' && linkPath === 'index.html') {
-                    // For the root, we might have an empty string or 'index.html'
-                    link.classList.add('active');
-                }
-            });
-        });
-    </script>
 </body>
 </html>
