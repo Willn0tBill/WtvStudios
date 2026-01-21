@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Whatever Studios | Our Story</title>
-    <link rel="stylesheet" href="css/style.css">
+    <title>Whatever Studios | Home</title>
+    <link rel="stylesheet" href="/css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
@@ -14,14 +14,14 @@
     <!-- Navigation -->
     <nav class="navbar">
         <div class="container">
-            <a href="index.html" class="logo">
+            <a href="/" class="logo">
                 <span class="logo-full">Whatever Studios</span>
                 <span class="logo-short">WtvS</span>
             </a>
             <div class="nav-links">
-                <a href="index.html" class="nav-link">Home</a>
-                <a href="games.html" class="nav-link">Games</a>
-                <a href="about.html" class="nav-link active">Our Story</a>
+                <a href="/" class="nav-link active">Home</a>
+                <a href="/games.html" class="nav-link">Games</a>
+                <a href="/about.html" class="nav-link">Our Story</a>
                 <a href="https://github.com" target="_blank" class="nav-link">
                     <i class="fab fa-github"></i> GitHub
                 </a>
@@ -32,76 +32,162 @@
         </div>
     </nav>
 
-    <section class="hero" style="padding: 150px 0; text-align: center;">
+    <!-- Hero Section -->
+    <section class="hero">
         <div class="container">
-            <h1 style="font-size: 3.5rem;">Our Story</h1>
-            <p style="font-size: 1.3rem; color: #a1a1aa; max-width: 600px; margin: 0 auto;">
-                From Scratch experiments to web-based adventures
-            </p>
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    <span class="hero-subtitle">Welcome to</span>
+                    Whatever Studios
+                </h1>
+                <p class="hero-tagline">Creating web-based games for pure entertainment</p>
+                <div class="cta-buttons">
+                    <a href="/about.html" class="btn btn-primary">Discover Our Story</a>
+                    <a href="/games.html" class="btn btn-secondary">Explore Games <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+            <div class="hero-graphic">
+                <div class="graphic-element"></div>
+                <div class="graphic-element"></div>
+                <div class="graphic-element"></div>
+            </div>
         </div>
     </section>
 
-    <section style="padding: 80px 0; background: #111111;">
+    <!-- About Section -->
+    <section class="about">
         <div class="container">
-            <div style="max-width: 800px; margin: 0 auto;">
-                <h2 style="color: #00d4ff; margin-bottom: 30px;">How We Started</h2>
-                <p style="color: #d4d4d8; margin-bottom: 20px; line-height: 1.8;">
-                    Whatever Studios began with a simple Scratch game that didn't quite work out. 
-                    We learned that browser limitations on Scratch prevented us from creating the 
-                    immersive experiences we envisioned.
-                </p>
-                <p style="color: #d4d4d8; margin-bottom: 20px; line-height: 1.8;">
-                    Instead of giving up, we pivoted. We discovered modern web technologies 
-                    (HTML5, CSS3, JavaScript) and realized we could create powerful, 
-                    browser-based games that anyone could play instantly.
-                </p>
-                <p style="color: #d4d4d8; margin-bottom: 40px; line-height: 1.8;">
-                    Now we're building Wtv Studios from the ground up, focusing on creating 
-                    accessible, fun, and innovative web games that work on any device.
-                </p>
-                
-                <div style="background: rgba(0, 212, 255, 0.1); border-left: 4px solid #00d4ff; padding: 25px; margin: 40px 0;">
-                    <h3 style="color: white; margin-bottom: 15px;">Our Mission Today</h3>
-                    <p style="color: #d4d4d8; margin: 0;">
-                        Create engaging web-based games that are free to play, 
-                        accessible to everyone, and push the boundaries of what's 
-                        possible in a browser.
-                    </p>
+            <div class="section-header">
+                <h2 class="section-title">About <span class="highlight">Wtv Studios</span></h2>
+                <p class="section-subtitle">Crafting digital experiences from the ground up</p>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <div class="status-badge">
+                        <span class="pulse"></span>
+                        Just Starting Out
+                    </div>
+                    <h3>We're building something special</h3>
+                    <p>Welcome to <strong>Whatever Studios (WtvS)</strong> – a passionate indie game studio dedicated to creating engaging, web-based gaming experiences. We believe great games should be accessible to everyone, directly in your browser.</p>
+                    
+                    <p>Currently in our early stages, we're pouring our creativity into developing games that blend strategy, innovation, and pure fun. Every title we create is hosted openly on GitHub, inviting players and developers alike to experience and learn from our journey.</p>
+                    
+                    <div class="mission-statement">
+                        <i class="fas fa-gamepad"></i>
+                        <p>Our mission is simple: <strong>create games that entertain, inspire, and connect people</strong> through innovative browser-based experiences.</p>
+                    </div>
+
+                    <div class="feature-grid">
+                        <div class="feature">
+                            <i class="fas fa-globe"></i>
+                            <h4>Web-Based</h4>
+                            <p>Play instantly in any modern browser</p>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-code-branch"></i>
+                            <h4>Open Development</h4>
+                            <p>Transparent process on GitHub</p>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-users"></i>
+                            <h4>Community Focused</h4>
+                            <p>Built with player feedback in mind</p>
+                        </div>
+                    </div>
                 </div>
-                
-                <div style="text-align: center; margin-top: 60px;">
-                    <a href="games.html" class="btn btn-primary" style="margin-right: 20px;">
-                        <i class="fas fa-gamepad"></i> See Our Games
-                    </a>
-                    <a href="index.html" class="btn btn-secondary">
-                        <i class="fas fa-home"></i> Back to Home
-                    </a>
+                <div class="about-visual">
+                    <div class="visual-card">
+                        <div class="card-glow"></div>
+                        <div class="card-content">
+                            <h4>Our First Games</h4>
+                            <p>Currently in development</p>
+                            <a href="/games.html" class="btn-small">See Preview <i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- Preview Section -->
+    <section class="preview">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Coming <span class="highlight">Soon</span></h2>
+                <p class="section-subtitle">First titles currently in development</p>
+            </div>
+            <div class="preview-grid">
+                <div class="preview-card">
+                    <div class="preview-header">
+                        <span class="preview-badge">Strategy</span>
+                        <h3>Domination</h3>
+                    </div>
+                    <p class="preview-description">A tactical turn-based game where you outsmart AI opponents in strategic combat. Plan your moves, capture territories, and dominate the battlefield.</p>
+                    <div class="preview-status">
+                        <span class="status-indicator in-dev"></span>
+                        In Development
+                    </div>
+                </div>
+                <div class="preview-card">
+                    <div class="preview-header">
+                        <span class="preview-badge">Simulation</span>
+                        <h3>Flight Craft</h3>
+                    </div>
+                    <p class="preview-description">Design, build, and pilot custom 3D aircraft. Test your creations in aerial combat against AI-controlled bots in dynamic sky battles.</p>
+                    <div class="preview-status">
+                        <span class="status-indicator in-dev"></span>
+                        In Development
+                    </div>
+                </div>
+            </div>
+            <div class="center-button">
+                <a href="/games.html" class="btn btn-large">
+                    View All Games <i class="fas fa-chevron-right"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
                 <div class="footer-brand">
-                    <a href="index.html" class="logo">
+                    <a href="/" class="logo">
                         <span class="logo-full">Whatever Studios</span>
                         <span class="logo-short">WtvS</span>
                     </a>
                     <p>Creating web-based games for pure entertainment.</p>
+                    <div class="social-links">
+                        <a href="https://github.com" target="_blank" class="social-link">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="social-link">
+                            <i class="fab fa-discord"></i>
+                        </a>
+                    </div>
                 </div>
                 <div class="footer-links">
                     <div class="footer-column">
                         <h4>Explore</h4>
-                        <a href="index.html">Home</a>
-                        <a href="games.html">Games</a>
-                        <a href="about.html">Our Story</a>
+                        <a href="/">Home</a>
+                        <a href="/games.html">Games</a>
+                        <a href="/about.html">Our Story</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Development</h4>
+                        <a href="https://github.com" target="_blank">GitHub</a>
+                        <a href="#">Roadmap</a>
+                        <a href="#">Contribute</a>
                     </div>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2024 Whatever Studios (WtvS). Our journey continues.</p>
+                <p>&copy; 2024 Whatever Studios (WtvS). All game concepts are works in progress.</p>
+                <p class="footer-note">Made with <i class="fas fa-heart"></i> for gamers everywhere</p>
             </div>
         </div>
     </footer>
@@ -115,8 +201,26 @@
             if (menuToggle) {
                 menuToggle.addEventListener('click', function() {
                     navLinks.classList.toggle('active');
+                    this.innerHTML = navLinks.classList.contains('active') 
+                        ? '<i class="fas fa-times"></i>' 
+                        : '<i class="fas fa-bars"></i>';
                 });
             }
+            
+            // Update active nav link
+            const currentPage = window.location.pathname;
+            const navLinksAll = document.querySelectorAll('.nav-link');
+            
+            navLinksAll.forEach(link => {
+                link.classList.remove('active');
+                const linkPath = link.getAttribute('href');
+                
+                if (currentPage === linkPath || 
+                    (currentPage === '/' && linkPath === '/') ||
+                    (currentPage === '' && linkPath === '/')) {
+                    link.classList.add('active');
+                }
+            });
         });
     </script>
 </body>
