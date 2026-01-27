@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Whatever Studios | Games</title>
+    <title>Whatever Studios | Home</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,8 +20,8 @@
                 <span class="logo-short">WtvS</span>
             </a>
             <div class="nav-links" id="navLinks">
-                <a href="index.html" class="nav-link">Home</a>
-                <a href="games.html" class="nav-link active">Games</a>
+                <a href="index.html" class="nav-link active">Home</a>
+                <a href="games.html" class="nav-link">Games</a>
                 <a href="about.html" class="nav-link">Our Story</a>
                 <a href="https://github.com/Willn0tBill/WtvStudios" target="_blank" class="nav-link">
                     <i class="fab fa-github"></i> GitHub
@@ -33,206 +33,124 @@
         </div>
     </nav>
 
-    <!-- Games Hero -->
-    <section class="games-hero">
+    <!-- Hero Section -->
+    <section class="hero">
         <div class="container">
-            <div class="games-hero-content">
-                <h1 class="games-title">Our <span class="highlight">Games</span></h1>
-                <p class="games-subtitle">Browser-based entertainment, currently in development</p>
-                <div class="stats">
-                    <div class="stat">
-                        <span class="stat-number">2</span>
-                        <span class="stat-label">Games in Development</span>
-                    </div>
-                    <div class="stat">
-                        <span class="stat-number">1</span>
-                        <span class="stat-label">Game Available Now</span>
-                    </div>
-                    <div class="stat">
-                        <span class="stat-number">0</span>
-                        <span class="stat-label">Downloads Required</span>
-                    </div>
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    <span class="hero-subtitle">Welcome to</span>
+                    Whatever Studios
+                </h1>
+                <p class="hero-tagline">Creating web-based games for pure entertainment</p>
+                <div class="cta-buttons">
+                    <a href="about.html" class="btn btn-primary">Discover Our Story</a>
+                    <a href="https://willn0tbill.github.io/domination/index.html" target="_blank" class="btn btn-play">
+                        <i class="fas fa-play-circle"></i> Play Domination
+                    </a>
+                    <a href="games.html" class="btn btn-secondary">Explore Games <i class="fas fa-arrow-right"></i></a>
                 </div>
+            </div>
+            <div class="hero-graphic">
+                <div class="graphic-element"></div>
+                <div class="graphic-element"></div>
+                <div class="graphic-element"></div>
             </div>
         </div>
     </section>
 
-    <!-- Games Grid -->
-    <section class="games-grid-section">
+    <!-- About Section -->
+    <section class="about">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">Game <span class="highlight">Portfolio</span></h2>
-                <p class="section-subtitle">Click on any game to learn more about its development</p>
+                <h2 class="section-title">About <span class="highlight">Wtv Studios</span></h2>
+                <p class="section-subtitle">Crafting digital experiences from the ground up</p>
             </div>
-
-            <div class="games-grid">
-                <!-- Domination Card - UPDATED WITH PLAY BUTTON -->
-                <div class="game-card" data-game="domination">
-                    <div class="card-inner">
-                        <div class="card-front">
-                            <div class="card-header">
-                                <div class="card-badge-container">
-                                    <span class="card-badge strategy">Strategy</span>
-                                    <span class="card-badge playable">Available Now</span>
-                                </div>
-                            </div>
-                            <div class="card-icon">
-                                <i class="fas fa-chess-king"></i>
-                            </div>
-                            <h3 class="card-title">Domination</h3>
-                            <p class="card-description">A tactical turn-based game where you outsmart AI opponents in strategic combat. Conquer territories, manage resources, and dominate the battlefield.</p>
-                            
-                            <!-- Features Grid -->
-                            <div class="card-features">
-                                <div class="feature">
-                                    <i class="fas fa-user"></i>
-                                    <span>Single Player</span>
-                                </div>
-                                <div class="feature">
-                                    <i class="fas fa-brain"></i>
-                                    <span>AI Opponents</span>
-                                </div>
-                                <div class="feature">
-                                    <i class="fas fa-hourglass-half"></i>
-                                    <span>Turn-Based</span>
-                                </div>
-                                <div class="feature">
-                                    <i class="fas fa-map"></i>
-                                    <span>Territory Control</span>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="card-back">
-                            <h4>Development Details</h4>
-                            <ul class="card-details">
-                                <li><strong>Status:</strong> Available Now</li>
-                                <li><strong>Tech:</strong> HTML5 Canvas, JavaScript</li>
-                                <li><strong>Platform:</strong> Web Browser</li>
-                                <li><strong>Release:</strong> Play Now!</li>
-                            </ul>
-                            <p class="card-back-desc">A deep strategic experience focusing on tactical decision-making and territory control. Each match presents unique challenges against adaptive AI with dynamic battlefield conditions.</p>
-                            <div class="progress-container">
-                                <div class="progress-label">Development Progress</div>
-                                <div class="progress-bar">
-                                    <div class="progress-fill domination-progress"></div>
-                                </div>
-                                <span class="progress-text">100%</span>
-                            </div>
-                        </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <div class="status-badge">
+                        <span class="pulse"></span>
+                        First Game Available!
                     </div>
-                    <div class="card-actions">
-                        <button class="card-action-btn flip-btn">
-                            <i class="fas fa-info-circle"></i> Details
-                        </button>
-                        <a href="https://willn0tbill.github.io/domination/index.html" target="_blank" class="card-action-btn play-btn">
-                            <i class="fas fa-play"></i> Play Now
-                        </a>
+                    <h3>We're building something special</h3>
+                    <p>Welcome to <strong>Whatever Studios (WtvS)</strong> – a passionate indie game studio dedicated to creating engaging, web-based gaming experiences. We believe great games should be accessible to everyone, directly in your browser.</p>
+                    
+                    <p>Currently in our early stages, we're pouring our creativity into developing games that blend strategy, innovation, and pure fun. Every title we create is hosted openly on GitHub, inviting players and developers alike to experience and learn from our journey.</p>
+                    
+                    <div class="mission-statement">
+                        <i class="fas fa-gamepad"></i>
+                        <p>Our mission is simple: <strong>create games that entertain, inspire, and connect people</strong> through innovative browser-based experiences.</p>
+                    </div>
+
+                    <div class="feature-grid">
+                        <div class="feature">
+                            <i class="fas fa-globe"></i>
+                            <h4>Web-Based</h4>
+                            <p>Play instantly in any modern browser</p>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-code-branch"></i>
+                            <h4>Open Development</h4>
+                            <p>Transparent process on GitHub</p>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-play-circle"></i>
+                            <h4>Available Now</h4>
+                            <p>Domination is ready to play</p>
+                        </div>
                     </div>
                 </div>
-
-                <!-- Flight Craft Card -->
-                <div class="game-card" data-game="flight">
-                    <div class="card-inner">
-                        <div class="card-front">
-                            <div class="card-header">
-                                <div class="card-badge-container">
-                                    <span class="card-badge simulation">Simulation</span>
-                                    <span class="card-badge upcoming">Coming Soon</span>
-                                </div>
-                            </div>
-                            <div class="card-icon">
-                                <i class="fas fa-fighter-jet"></i>
-                            </div>
-                            <h3 class="card-title">Flight Craft</h3>
-                            <p class="card-description">Design, build, and pilot custom 3D aircraft in aerial combat. Create unique planes and test them against AI-controlled enemies.</p>
-                            
-                            <div class="card-features">
-                                <div class="feature">
-                                    <i class="fas fa-cube"></i>
-                                    <span>3D Design</span>
-                                </div>
-                                <div class="feature">
-                                    <i class="fas fa-plane"></i>
-                                    <span>Aerial Combat</span>
-                                </div>
-                                <div class="feature">
-                                    <i class="fas fa-robot"></i>
-                                    <span>AI Bots</span>
-                                </div>
-                                <div class="feature">
-                                    <i class="fas fa-paint-brush"></i>
-                                    <span>Customization</span>
-                                </div>
-                            </div>
+                <div class="about-visual">
+                    <div class="visual-card">
+                        <div class="card-glow"></div>
+                        <div class="card-content">
+                            <h4>Play Our First Game</h4>
+                            <p>Domination is now available</p>
+                            <a href="https://willn0tbill.github.io/domination/index.html" target="_blank" class="btn-small">Play Now <i class="fas fa-play"></i></a>
                         </div>
-                        
-                        <div class="card-back">
-                            <h4>Development Details</h4>
-                            <ul class="card-details">
-                                <li><strong>Status:</strong> Concept Phase</li>
-                                <li><strong>Tech:</strong> Three.js, WebGL</li>
-                                <li><strong>Platform:</strong> Modern Browsers</li>
-                                <li><strong>Release:</strong> 2025 (Estimated)</li>
-                            </ul>
-                            <p class="card-back-desc">Combines vehicle construction with aerial combat physics. Players can design every aspect of their aircraft, from wings to weapon systems, in a realistic 3D environment.</p>
-                            <div class="progress-container">
-                                <div class="progress-label">Development Progress</div>
-                                <div class="progress-bar">
-                                    <div class="progress-fill flight-progress"></div>
-                                </div>
-                                <span class="progress-text">15%</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card-actions">
-                        <button class="card-action-btn flip-btn">
-                            <i class="fas fa-info-circle"></i> Details
-                        </button>
-                        <button class="card-action-btn disabled">
-                            <i class="fas fa-play"></i> Coming Soon
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Coming Soon Cards -->
-                <div class="game-card placeholder">
-                    <div class="placeholder-content">
-                        <div class="placeholder-icon">
-                            <i class="fas fa-plus"></i>
-                        </div>
-                        <h3>Next Project</h3>
-                        <p>Our next game concept is in planning. Stay tuned for updates!</p>
-                    </div>
-                </div>
-
-                <div class="game-card placeholder">
-                    <div class="placeholder-content">
-                        <div class="placeholder-icon">
-                            <i class="fas fa-lightbulb"></i>
-                        </div>
-                        <h3>Your Idea Here</h3>
-                        <p>Have a game concept? We're open to community suggestions!</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Call to Action -->
-    <section class="cta-section">
+    <!-- Preview Section -->
+    <section class="preview">
         <div class="container">
-            <div class="cta-content">
-                <h2>Follow Our <span class="highlight">Development</span></h2>
-                <p>Join us on GitHub to track our progress, report bugs, or contribute to our open-source projects.</p>
-                <div class="cta-buttons">
-                    <a href="https://github.com/Willn0tBill/WtvStudios" target="_blank" class="btn btn-large btn-github">
-                        <i class="fab fa-github"></i> Visit Our GitHub
-                    </a>
-                    <a href="https://willn0tbill.github.io/domination/index.html" target="_blank" class="btn btn-large btn-play">
-                        <i class="fas fa-play-circle"></i> Play Domination Now
+            <div class="section-header">
+                <h2 class="section-title">Our <span class="highlight">Games</span></h2>
+                <p class="section-subtitle">First titles currently in development</p>
+            </div>
+            <div class="preview-grid">
+                <div class="preview-card">
+                    <div class="preview-header">
+                        <span class="preview-badge">Strategy</span>
+                        <h3>Domination</h3>
+                    </div>
+                    <p class="preview-description">A tactical turn-based game where you outsmart AI opponents in strategic combat. Plan your moves, capture territories, and dominate the battlefield.</p>
+                    <div class="preview-status">
+                        <span class="status-indicator ready"></span>
+                        Available Now
+                    </div>
+                    <a href="https://willn0tbill.github.io/domination/index.html" target="_blank" class="btn btn-small" style="margin-top: 20px; width: 100%;">
+                        <i class="fas fa-play"></i> Play Domination
                     </a>
                 </div>
+                <div class="preview-card">
+                    <div class="preview-header">
+                        <span class="preview-badge">Simulation</span>
+                        <h3>Flight Craft</h3>
+                    </div>
+                    <p class="preview-description">Design, build, and pilot custom 3D aircraft. Test your creations in aerial combat against AI-controlled bots in dynamic sky battles.</p>
+                    <div class="preview-status">
+                        <span class="status-indicator in-dev"></span>
+                        In Development
+                    </div>
+                </div>
+            </div>
+            <div class="center-button">
+                <a href="games.html" class="btn btn-large">
+                    View All Games <i class="fas fa-chevron-right"></i>
+                </a>
             </div>
         </div>
     </section>
@@ -270,13 +188,13 @@
                         <h4>Development</h4>
                         <a href="https://github.com/Willn0tBill/WtvStudios" target="_blank">GitHub</a>
                         <a href="#">Roadmap</a>
-                        <a href="#">Contribute</a>
+                        <a href="https://willn0tbill.github.io/domination/index.html" target="_blank">Play Domination</a>
                     </div>
                 </div>
             </div>
             <div class="footer-bottom">
                 <p>&copy; <span id="currentYear">2024</span> Whatever Studios (WtvS). All game concepts are works in progress.</p>
-                <p class="footer-note">Game development is a journey. Thanks for joining ours.</p>
+                <p class="footer-note">Made with <i class="fas fa-heart"></i> for gamers everywhere</p>
             </div>
         </div>
     </footer>
