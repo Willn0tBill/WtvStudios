@@ -1660,3 +1660,51 @@ body.loading {
 .project-card {
     opacity: 0;
 }
+/* ===== PLAY BUTTON STYLES ===== */
+.btn-play {
+    background: linear-gradient(135deg, #00ff88, #00cc66);
+    color: #0a0a0a;
+}
+
+.btn-play:hover {
+    background: linear-gradient(135deg, #00ff99, #00dd77);
+    box-shadow: 0 10px 25px rgba(0, 255, 136, 0.3);
+}
+
+.play-btn {
+    background: linear-gradient(135deg, #00ff88, #00cc66);
+    color: #0a0a0a;
+    border: none;
+}
+
+.play-btn:hover {
+    background: linear-gradient(135deg, #00ff99, #00dd77);
+    box-shadow: 0 10px 25px rgba(0, 255, 136, 0.3);
+}
+
+/* Status indicator for available games */
+.status-indicator.ready {
+    background: #00ff88;
+    animation: pulse 2s infinite;
+}
+
+/* Card badge for playable games */
+.card-badge.playable { 
+    background: rgba(0, 255, 136, 0.1); 
+    color: #00ff88; 
+}
+
+/* CTA section buttons */
+.cta-section .cta-buttons {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 30px;
+    flex-wrap: wrap;
+}
+
+/* Progress bar for completed games */
+.domination-progress {
+    width: 100% !important;
+    background: linear-gradient(90deg, #00ff88, #00cc66) !important;
+}
