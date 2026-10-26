@@ -29,6 +29,7 @@ function initMobileMenu() {
     if (menuToggle && navLinks) {
         menuToggle.addEventListener('click', function() {
             navLinks.classList.toggle('active');
+            this.setAttribute('aria-expanded', String(navLinks.classList.contains('active')));
             this.innerHTML = navLinks.classList.contains('active') 
                 ? '<i class="fas fa-times"></i>' 
                 : '<i class="fas fa-bars"></i>';
@@ -39,6 +40,7 @@ function initMobileMenu() {
             link.addEventListener('click', () => {
                 navLinks.classList.remove('active');
                 menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
+                menuToggle.setAttribute('aria-expanded','false');
             });
         });
         
@@ -47,6 +49,7 @@ function initMobileMenu() {
             if (!navLinks.contains(e.target) && !menuToggle.contains(e.target)) {
                 navLinks.classList.remove('active');
                 menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
+                menuToggle.setAttribute('aria-expanded','false');
             }
         });
     }
@@ -73,6 +76,7 @@ function initGameCards() {
                     card.classList.remove('flipped');
                     this.innerHTML = '<i class="fas fa-info-circle"></i> Details';
                     this.classList.remove('active');
+                    this.setAttribute('aria-expanded','false');
                 } else {
                     // Flip to back
                     // First, flip back any other flipped cards
@@ -83,6 +87,7 @@ function initGameCards() {
                             if (otherButton) {
                                 otherButton.innerHTML = '<i class="fas fa-info-circle"></i> Details';
                                 otherButton.classList.remove('active');
+                                otherButton.setAttribute('aria-expanded','false');
                             }
                         }
                     });
@@ -91,6 +96,7 @@ function initGameCards() {
                     card.classList.add('flipped');
                     this.innerHTML = '<i class="fas fa-undo"></i> Back';
                     this.classList.add('active');
+                    this.setAttribute('aria-expanded','true');
                     
                     // Scroll the card into view on mobile
                     setTimeout(() => {
@@ -107,6 +113,7 @@ function initGameCards() {
                         if (otherButton) {
                             otherButton.innerHTML = '<i class="fas fa-info-circle"></i> Details';
                             otherButton.classList.remove('active');
+                                otherButton.setAttribute('aria-expanded','false');
                         }
                     }
                 });
@@ -118,9 +125,11 @@ function initGameCards() {
                 if (card.classList.contains('flipped')) {
                     this.innerHTML = '<i class="fas fa-undo"></i> Back';
                     this.classList.add('active');
+                    this.setAttribute('aria-expanded','true');
                 } else {
                     this.innerHTML = '<i class="fas fa-info-circle"></i> Details';
                     this.classList.remove('active');
+                    this.setAttribute('aria-expanded','false');
                 }
             }
         });
@@ -175,6 +184,7 @@ function initGameCards() {
                     if (button) {
                         button.innerHTML = '<i class="fas fa-info-circle"></i> Details';
                         button.classList.remove('active');
+                        button.setAttribute('aria-expanded','false');
                     }
                 }
             });
@@ -226,6 +236,7 @@ function initScrollEffects() {
         rootMargin: '0px 0px -50px 0px'
     };
     
+    if (!('IntersectionObserver' in window)) return;
     const observer = new IntersectionObserver(function(entries) {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -356,6 +367,7 @@ window.addEventListener('resize', function() {
                 if (button) {
                     button.innerHTML = '<i class="fas fa-info-circle"></i> Details';
                     button.classList.remove('active');
+                        button.setAttribute('aria-expanded','false');
                 }
             });
         }
@@ -399,12 +411,4 @@ if (!document.querySelector('#particle-animation')) {
 // Touch optimization for mobile
 document.addEventListener('touchstart', function() {}, { passive: true });
 
-// Prevent zoom on double tap for mobile
-let lastTouchEnd = 0;
-document.addEventListener('touchend', function(event) {
-    const now = (new Date()).getTime();
-    if (now - lastTouchEnd <= 300) {
-        event.preventDefault();
-    }
-    lastTouchEnd = now;
-}, false);
+// Keep native touch and pinch-to-zoom behavior for accessibility.
