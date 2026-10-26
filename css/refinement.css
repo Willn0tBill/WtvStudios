@@ -1,0 +1,19 @@
+/* WtvS site refresh: readable contrast, intentional depth and mobile-first focus. */
+:root{color-scheme:dark;--surface:#111b28;--hairline:rgba(148,190,223,.16)}
+body{background:radial-gradient(ellipse at 85% 5%,#122638 0%,#090e16 48%,#090b12 100%);color:#edf5fd}
+.navbar{background:rgba(9,14,23,.86);backdrop-filter:blur(18px)}
+.hero{background:radial-gradient(ellipse at 80% 40%,rgba(22,119,173,.19),transparent 62%),transparent}
+.hero-title{letter-spacing:-.045em;line-height:1.08}
+.hero-tagline,.section-subtitle{color:#b1c1d1}
+.preview-card,.game-card,.philosophy-card,.project-card,.feature{border-color:var(--hairline)}
+.preview-card{background:linear-gradient(160deg,#162637,#0e1723);box-shadow:0 14px 42px rgba(0,0,0,.18)}
+.game-card{border-radius:20px;overflow:hidden}
+.btn,.card-action-btn{min-height:44px}
+.btn:focus-visible,.card-action-btn:focus-visible,.nav-link:focus-visible,.menu-toggle:focus-visible,a:focus-visible,button:focus-visible{outline:3px solid #83e2ff;outline-offset:4px}
+.preview-grid{align-items:stretch}
+.preview-card{display:flex;flex-direction:column}
+.preview-card .preview-status{margin-top:auto}
+.preview-card .btn{margin-top:18px}
+.domination-progress{width:40%!important}
+@media(max-width:768px){.navbar{padding:12px 0}.hero{padding:125px 0 58px;min-height:auto}.hero .container{gap:26px}.hero-title{font-size:clamp(2.5rem,10vw,4.4rem)}.cta-buttons{gap:12px}.btn{width:100%;text-align:center}.preview-card{min-height:0}.game-card{min-height:380px}.footer-content{gap:30px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto!important}*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
