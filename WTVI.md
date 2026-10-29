@@ -7,6 +7,8 @@
 
 **Project:** Studio website and public portfolio
 
+**Operating business:** SwiftSupply (including SwiftSupply Ops) belongs under Wtv Innovations. Keep its retail brand visible, with WtvI presented as the parent.
+
 The legacy repository and GitHub Pages path remain WtvStudios to preserve working links. Product branding on published pages is Wtv Innovations.
 
 ## Repository integration
