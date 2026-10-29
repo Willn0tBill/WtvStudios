@@ -1,7 +1,7 @@
 {
-  "name": "wtv-studios",
-  "version": "1.0.0",
-  "description": "Whatever Studios - Web-based game development studio",
+  "name": "wtv-innovations",
+  "version": "1.1.0",
+  "description": "Wtv Innovations (WtvI) — games, software, websites and digital experiences",
   "scripts": {
     "start": "live-server --port=3000 --open=index.html",
     "build": "echo 'No build step required'"
