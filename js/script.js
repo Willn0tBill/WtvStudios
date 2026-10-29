@@ -1,6 +1,6 @@
 // DOM Ready
 document.addEventListener('DOMContentLoaded', function() {
-    console.log('🎮 Whatever Studios Website Loaded Successfully!');
+    console.log('🎮 Wtv Innovations Website Loaded Successfully!');
     
     // Initialize all features
     initMobileMenu();
@@ -264,7 +264,7 @@ function initActiveNav() {
         
         if (currentPage === linkPage || 
             (currentPage === '' && linkPage === 'index.html') ||
-            (currentPage === 'WtvStudios/' && linkPage === 'index.html')) {
+            (currentPage === 'WtvItudios/' && linkPage === 'index.html')) {
             link.classList.add('active');
         }
     });
