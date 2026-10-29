@@ -1,4 +1,4 @@
-/* WtvS site refresh: readable contrast, intentional depth and mobile-first focus. */
+/* WtvI site refresh: readable contrast, intentional depth and mobile-first focus. */
 :root{color-scheme:dark;--surface:#111b28;--hairline:rgba(148,190,223,.16)}
 body{background:radial-gradient(ellipse at 85% 5%,#122638 0%,#090e16 48%,#090b12 100%);color:#edf5fd}
 .navbar{background:rgba(9,14,23,.86);backdrop-filter:blur(18px)}
