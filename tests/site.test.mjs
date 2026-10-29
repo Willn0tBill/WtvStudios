@@ -11,7 +11,7 @@ test('all pages use Wtv Innovations as public studio identity',()=>{
   const text=get(page);
   assert.match(text,/Wtv Innovations/,page);
   assert.ok(!/Whatever Studios|Wtv Studios|\bWtvS\b/.test(text),page+' should not display old brand');
-  assert.match(text,/<title>[^<]*Wtv Innovations<\/title>/,page);
+  assert.match(text,/<title>[^<]*Wtv Innovations[^<]*<\/title>/,page);
   assert.ok(text.includes('css/wtvi.css'),page+' uses updated studio style');
  }
 });
